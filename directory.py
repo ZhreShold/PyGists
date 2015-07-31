@@ -40,10 +40,12 @@ def list_files_with_extension(root, exts):
   return [x for x in os.listdir(root) if os.path.isfile(os.path.join(root,x)) and os.path.splitext(x)[1] in exts]
 
 ####################################################
-### list files recursively with pattern to match ###
-# py_files = list_files_recursive('.', '*.py')
-def list_files_recursive(root, pattern):
-  matches = []
-  for root, dirnames, filenames in os.walk(root):
-    for filename in fnmatch.filter(filenames, pattern):
-      matches.append(os.path.join(root, filename))
+### list files recursively with patterns to match ###
+# py_files = list_files_recursive('.', ['*.py', '*a.jpg','abc.*'])
+def list_files_recursive(root, patterns):
+    matches = []
+    for root, dirnames, filenames in os.walk(root):
+        for pattern in patterns:
+            for filename in fnmatch.filter(filenames, pattern):
+                matches.append(os.path.join(root, filename))
+    return matches
