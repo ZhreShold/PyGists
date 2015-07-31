@@ -43,9 +43,9 @@ def list_files_with_extension(root, exts):
 ### list files recursively with patterns to match ###
 # py_files = list_files_recursive('.', ['*.py', '*a.jpg','abc.*'])
 def list_files_recursive(root, patterns):
-    matches = []
+    matches = set()
     for root, dirnames, filenames in os.walk(root):
         for pattern in patterns:
             for filename in fnmatch.filter(filenames, pattern):
-                matches.append(os.path.join(root, filename))
+                matches.add(os.path.join(root, filename))
     return matches
