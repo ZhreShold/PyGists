@@ -37,7 +37,9 @@ def list_dir(root):
 ################################################
 ### list files with extensions in root folder ###
 def list_files_with_extension(root, exts):
-  return [x for x in os.listdir(root) if os.path.isfile(os.path.join(root,x)) and os.path.splitext(x)[1] in exts]
+  return [os.path.join(root,x) for x in os.listdir(root)\
+  if os.path.isfile(os.path.join(root,x))\ 
+  and os.path.splitext(x)[1].lower() in exts]
 
 ####################################################
 ### list files recursively with patterns to match ###
