@@ -21,9 +21,9 @@ def mkdir_34(path):
   
 # wrapper
 def mkdir(path):
-  if sys.version_info[0:2] >= (3, 4)
+  if sys.version_info[0:2] >= (3, 4):
       mkdir_34(path)
-  elif sys.version_info[0:2] >= (2, 7)
+  elif sys.version_info[0:2] >= (2, 7):
       mkdir_27(path)
   else:
       print("At least python 2.7 required")
